@@ -5,7 +5,7 @@ module.exports = function(mongoUrl) {
 
   const Workers = mongoose.model('waiter', {
     name: String,
-    weekdays: String
+    weekdays: Array
   });
 
   return {

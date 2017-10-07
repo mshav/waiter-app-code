@@ -10,121 +10,116 @@ module.exports = function(models) {
   }
   const waiters = function(req, res, done) {
     const name = req.params.username
-
-    models.Workers.create({
-      name: name,
-       weekdays: req.body.days
-
+    models.Workers.findOne({
+      name: req.params.username
     }, function(err, results) {
       if (err) {
         return done(err)
       }
-      models.Workers.findOne({
+      if(results){
+        results.weekdays = req.body.days;
 
-        name: name,
-         weekdays: req.body.days
-      }, function(err, results) {
-
-         if(err){
-
-       return (err)
-
-         }
-
-    if (results) {
-      models.Workers.find({
-        name: name,
-       weekdays: req.body.days
-
-      },function(err, results){
-
-     if (err) {
-
-      return done(err)
-
-    }
-
-
-        console.log(results);
-        res.render("waiter", {
-          Nodayz: req.body.days
-
-
+        results.save(function (err) {
+          if (err) {
+            return done(err)
+          }
         })
 
+        res.render("waiter", {
+          Nodayz: results.weekdays
+        })
 
-      })
-        }
-      })
+      }
+
+      if (!results) {
+        models.Workers.create({
+          name: name,
+          weekdays: req.body.days
+
+        }, function(err, results) {
+          if (err) {
+            return done(err)
+          }
+          res.render("waiter", {
+            Nodayz: req.body.days
+          })
+        })
+      }
+
     })
+
   }
 
+
   const Days = function(req, res, done) {
-    models.Workers.find({},function(err, results){
-    if(err){
-      console.log(err);
-    }
-    var monday = [];
-    var tuesday = [];
-    var wenseday = [];
-    var thursday = [];
-    var friday = [];
-    var saturday = [];
-    var sunday = [];
-    results.forEach(function (eachResult) {
-var Name = eachResult.name;
-var weekdays = eachResult.weekdays;
-for (var i = 0; i < weekdays.length; i++) {
-if (weekdays == "Monday") {
-monday.push(Name);
-console.log(monday);
+    models.Workers.find({}, function(err, results) {
+      if (err) {
+        console.log(err);
+      }
+      var monday = [];
+      var tuesday = [];
+      var wednesday = [];
+      var thursday = [];
+      var friday = [];
+      var saturday = [];
+      var sunday = [];
+      results.forEach(function(eachResult) {
+        var Name = eachResult.name;
+        var weekdays = eachResult.weekdays;
+        for (var i = 0; i < weekdays.length; i++) {
+          console.log(i+')', weekdays[i]);
+
+
+          if (weekdays[i] == "Monday") {
+            monday.push(Name);
+
+          }
+            if (weekdays[i] == "Tuesday") {
+             tuesday.push(Name)
+           console.log(tuesday);
+          }
+           if (weekdays[i] == "Wednesday") {
+
+             wednesday.push(Name);
+              console.log(wednesday);
+
+          }
+           if (weekdays[i] == "Thursday") {
+             thursday.push(Name)
+             console.log(thursday);
+
+           }
+          if (weekdays[i] == "Friday") {
+             friday.push(Name)
+          console.log(friday);
+           }
+           if (weekdays[i] == "Sunday") {
+             sunday.push(Name)
+           console.log(sunday);
+         } if (weekdays[i] == "Sutarday") {
+
+             saturday.push(Name)
+           }
+
+
+           
+
+        }
+
+      })
+
+      console.log(saturday);
+      res.render("days", {
+        day1: monday, day2: tuesday, day3: wednesday,day4: thursday,day5: friday,day6: saturday,day7: sunday
+      })
+
+
+
+})
 }
-else if (weekdays == "Tuesday") {
-   tuesday.push(Name)
-  console.log(tuesday);
-}
-
-else if (weekdays == "Wenseday") {
-
-wenseday.push(Name);
-
-console.log(wenseday);
-
-}
-
-else if (weekdays == "Thursday") {
-thursday.push(Name)
-console.log(thursday);
-
-}
-else  if (weekdays == "Friday") {
-  friday.push(Name)
-  console.log(friday);
-}
-if (weekdays == "Sunday") {
- sunday.push(Name)
- console.log(sunday);
-}
-else  if (weekdays == "Saturday") {
-
-saturday.push(Name)
-}
-
-}
-
-    })
-    res.render("days", {day1:monday
-      // ,day2:monday,day3:monday,day4:monday, day5:monday, day6:monday, day7:monday
-
-    })
-
-
-    })
 
 
 
-
- };
   return {
     amagama,
     waiters,

@@ -1,26 +1,102 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <h1>Waiter Availability</h1>
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    Waiter Availability
+  </title>
+  <link type="text/css" rel="stylesheet.css" href="waiter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+h1{
+color:white;
+margin-left: 450px;
+border: solid #DC4C46 10px;
+width: 345px;
+border-radius: -1px;
+background-color:#DC4C46;
+font-family:cursive;
+}
+body{
+
+   background-color: #C1C9A6;
+}
+
+h4{
+  margin-left: 410px;
+ font-size: 35px;
+ opacity: 0.2;
+ font-family: fantasy;
+
+}
+
+
+
+</style>
+
+   </head>
+
 
   <body>
+
+      <h1>Waiters Selected Days</h1>
+
+
     <br>
-<form class="" action="/days" method="post">
-  {{day1}}
-  {{day2}}
-  {{day3}}
-  {{day4}}
-  {{day5}}
-  {{day6}}
-  {{day7}}
-</form>
+    <br>
+    <br>
+    <form class="" action="/days" method="post">
 
 
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="color: #D2691E">Monday</th>
+            <th style="color: #4F84C4">Tuesday</th>
+            <th style="color: #005960">Wednesday</th>
+            <th style="color: #9C9A40">Thursday</th>
+            <th style="color: #898E8C">Friday</th>
+            <th style="color: #DC4C46">Saturday</th>
+            <th style="color: #006E51">Sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
 
-
+            <td class= {{day1Color}}>{{#each day1}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+            <td class= {{day2Color}}>{{#each day2}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+            <td class= {{day3Color}}>{{#each day3}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+            <td class= {{day4Color}}>{{#each day4}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+            <td class= {{day5Color}}>{{#each day5}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+            <td class= {{day6Color}}>{{#each day6}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+            <td class= {{day7Color}}>{{#each day7}}
+            <li style="color:white">{{this}}</li>
+            {{/each}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+  <br>
+  <hr>
+  <h4 style="color:#005960">THANK YOU FOR YOUR DAYS</h4>
+  <hr>
   </body>
 </html>

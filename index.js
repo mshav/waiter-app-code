@@ -40,6 +40,7 @@ app.post('/waiter/:username',nameRoutes.waiters);
 // GET	/days	Show your sister which days waiters can work
 app.get("/days",nameRoutes.Days);
 // app.get("/days", nameRoutes.amagama);
+// app.get("/days",nameRoutes.Colors);
 
 
 var port = process.env.PORT|| 3000;

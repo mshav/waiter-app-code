@@ -2,32 +2,100 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet.css" href="waiter.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title></title>
+    <style>
+
+h1{
+
+  color:white;
+  margin-left: 480px;
+  border: solid  #009B77 10px;
+  width: 345px;
+  border-radius: 5px;
+  background-color: #009B77;
+  font-family:cursive;
+  text-align: center;
+
+
+
+
+}
+h2{
+
+  color:white;
+  margin-left: 480px;
+  border: solid  #4C6A92 10px;
+  width: 345px;
+  border-radius: -1px;
+  background-color: #4C6A92;
+  font-family:cursive;
+  text-align: center;
+
+
+
+}
+
+.days{
+margin-left: 480px;
+
+
+
+
+}
+li{
+margin-left: 480px;
+
+
+
+}
+body{
+
+  background-color: #80AF5E;
+}
+.handle{
+margin-left: 480px;
+
+
+}
+
+
+    </style>
   </head>
   <h1>Waiter Availability</h1>
 
   <body>
     <br>
     <br>
-<!-- <form class="" action="/waiter/{{username}}" method="post">
 
-</form> -->
-{{name}}
-<form class="" action='' method="post">
+
+
+
+    <div class="handle">
+  {{name}}
+</div>
+<br>
+<br>
+<form class="days" action='' method="post">
   <input type="checkbox" name="days" value="Sunday" {{#if weekdays.Sunday}} checked {{/if}}>Sunday
   <input type="checkbox" name="days" value="Monday" {{#if weekdays.Monday}} checked {{/if}}>Monday
   <input type="checkbox" name="days" value="Tuesday" {{#if weekdays.Tuesday}} checked {{/if}}>Tuesday
-  <input type="checkbox" name="days" value="Wenesday" {{#if weekdays.Wednesday}} checked {{/if}}>Wenseday
+  <input type="checkbox" name="days" value="Wednesday" {{#if weekdays.Wednesday}} checked {{/if}}>Wenseday
   <input type="checkbox" name="days" value="Thursday" {{#if weekdays.Thursday}} checked {{/if}}>Thursday
   <input type="checkbox" name="days" value="Friday"  {{#if weekdays.Friday}} checked {{/if}}>Friday
   <input type="checkbox" name="days" value="Sutarday" {{#if weekdays.Saturday}} checked {{/if}}>Sutarday <br>
   <br>
-  <button type="submit" >Submit</button>
+  <button type="submit" class="btn-danger">Submit</button>
 
 </form>
-<!-- <form class="" action="/days" method="post"> -->
+<br>
+<br>
+ <h2>Days selected</h2>{{#each Nodayz}}<li style="color:white">{{this}}</li>{{/each}}
 
 
- {{Nodayz}}
   </body>
 </html>
