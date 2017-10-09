@@ -67,7 +67,7 @@ module.exports = function(models) {
         var Name = eachResult.name;
         var weekdays = eachResult.weekdays;
         for (var i = 0; i < weekdays.length; i++) {
-          console.log(i+')', weekdays[i]);
+          // console.log(i+')', weekdays[i]);
 
 
           if (weekdays[i] == "Monday") {
@@ -102,27 +102,61 @@ module.exports = function(models) {
            }
 
 
-           
+
 
         }
 
       })
 
-      console.log(saturday);
+     const Coloredited = function(color){
+    if(color === 3){
+     return 'colorRed';
+    }
+
+    if (color < 3){
+      return "colorBlue";
+    }
+
+    if(color > 3){
+return 'colorOrange';
+}
+
+
+      }
+      //console.log(saturday);
       res.render("days", {
-        day1: monday, day2: tuesday, day3: wednesday,day4: thursday,day5: friday,day6: saturday,day7: sunday
+        day1: monday, colorM:Coloredited(monday.length), day2: tuesday,colorT:Coloredited(tuesday.length),
+        day3: wednesday,colorW:Coloredited(wednesday.length)
+        ,day4: thursday,colorTH:Coloredited(thursday.length),day5: friday,colorF:Coloredited(friday.length),
+        day6: saturday,colorS:Coloredited(saturday.length),day7: sunday,colorSU:Coloredited(sunday.length)
       })
 
 
 
 })
+// console.log(Name);
+}
+const clear = function(req,res, next){
+  name:req.body.params
+models.Workers.remove({}, function(err){
+
+if (err) {
+
+return next(err)
+
 }
 
+res.render("days")
 
+})
+
+
+}
 
   return {
     amagama,
     waiters,
-    Days
+    Days,
+    clear
   }
 }

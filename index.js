@@ -41,7 +41,8 @@ app.post('/waiter/:username',nameRoutes.waiters);
 app.get("/days",nameRoutes.Days);
 // app.get("/days", nameRoutes.amagama);
 // app.get("/days",nameRoutes.Colors);
-
+app.post("/clear", nameRoutes.clear);
+app.post("/clear", nameRoutes.clear);
 
 var port = process.env.PORT|| 3000;
 app.listen(port, function() {
